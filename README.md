@@ -1,6 +1,6 @@
 # Speech Analysis MCP Server
 
-本專案是一個語音分析伺服器，結合 GPT API 與 MCP（Model Context Protocol）架構，用於自動分析英文口說內容。支援語音轉文字、文法錯誤分析、詞彙建議、邏輯建議及原句比對等功能。
+本專案是一個語音分析伺服器，使用MCP（Model Context Protocol）架構，用於自動分析英文口說內容。支援語音轉文字、文法錯誤分析、詞彙建議、邏輯建議及原句比對等功能。
 
 ## 專案結構
 ```
