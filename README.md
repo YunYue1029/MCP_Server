@@ -27,14 +27,13 @@
 - **詞彙建議**：提供更佳詞彙選擇
 - **邏輯建議**：回饋語句內容結構與邏輯
 - **句子比對**：標示與原文不一致之處
-- **GPT Agent**：自動選擇並調用 MCP 工具
 
 ## 安裝步驟
 
 1. 下載專案：
     ```bash
-    git clone https://github.com/your_username/your_repo.git
-    cd your_repo
+    git clone https://github.com/YunYue1029/MCP_server
+    cd MCP_server
     ```
 
 2. 建立虛擬環境並安裝依賴：
@@ -46,7 +45,7 @@
 
 3. 啟動 MCP server：
     ```bash
-    python main.py
+    uvicorn main:app --reload
     ```
 
 ## API & 測試方式
