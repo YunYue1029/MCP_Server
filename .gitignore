@@ -1,0 +1,6 @@
+__pycache__
+user_audio
+speech_audio
+myenv
+*.env
+.DS_Store
