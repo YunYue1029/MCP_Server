@@ -1,5 +1,6 @@
 import whisper
 import os
+import librosa
 
 model = whisper.load_model("base")
 
@@ -31,10 +32,17 @@ def translate(arguments):
     if not file_path or not os.path.exists(file_path):
         return {"error": f"File not found: {file_path}"}
 
-    result = model.transcribe(file_path, task="translate")
+    duration = librosa.get_duration(path=file_path)
 
-    translated_text = result.get("text", "")
+    result = model.transcribe(file_path, task="translate")
+    translated_text = result.get("text", "").strip()
+
+    word_count = len(translated_text.split())
+
+    duration_minutes = duration / 60
+    wpm = round(word_count / duration_minutes, 2) if duration_minutes > 0 else 0
 
     return {
-        "translation": translated_text.strip(),
+        "translation": translated_text,
+        "wpm": wpm
     }

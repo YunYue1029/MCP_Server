@@ -19,14 +19,14 @@ def grammar_check(arguments):
             "suggestion": "建議的修改方式"
             }
         ],
+        "original_sentence": "原始句子",
         "suggested_sentence": "修正後的完整句子",
-        "explanation": "分析原句可能想表達的意思與整體語法建議"
     }
     請使用繁體中文解釋內容。
     """
 
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"原始句子：{user_text}"}
