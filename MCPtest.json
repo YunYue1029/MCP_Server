@@ -1,32 +1,32 @@
 {
   "tool_calls": [
-    {
-        "id": "tool_1",
-        "function": {
-            "name": "compareSentence",
+      {
+          "id": "tool_1",
+          "function": {
+              "name": "compareSentence",
+              "arguments": {
+                  "original": "In San Jose, California, these guys parked behind a cyber truck when a guy with blonde highlights in 2025 comes out and kicks it.",
+                  "spoken": "In San Jose, California, these guys behind a cyber truck when a guy belong highlights 2025  out and kicks it."
+              }
+          }
+      },
+      {
+          "id": "tool_2",
+          "function": {
+            "name": "translate",
             "arguments": {
-                "original": "In San Jose, California, these guys parked behind a cyber truck when a guy with blonde highlights in 2025 comes out and kicks it.",
-                "spoken": "In San Jose, California, these guys behind a cyber truck when a guy belong highlights 2025  out and kicks it."
+              "file_path": "user_audio/TTS.wav"
             }
+          }
+        },
+        {
+          "id": "tool_3",
+          "function": {
+            "name": "grammar_check",
+            "arguments": {
+              "text": "In San Jose, California, these guy parked behind a cyber truck when guy with blonde highlights in 2025 come out and kicks it."
+            }
+          }
         }
-    },
-    {
-      "id": "tool_2",
-      "function": {
-        "name": "translate",
-        "arguments": {
-          "file_path": "audio/videoplayback.mp3"
-        }
-      }
-    },
-    {
-      "id": "tool_3",
-      "function": {
-        "name": "grammar_check",
-        "arguments": {
-          "text": "In San Jose, California, these guy parked behind a cyber truck when guy with blonde highlights in 2025 come out and kicks it."
-        }
-      }
-    }
   ]
 }

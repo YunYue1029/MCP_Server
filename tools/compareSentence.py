@@ -8,18 +8,22 @@ def compare_sentence_mismatch(arguments):
     original_words = original.split()
     spoken_words = spoken.split()
 
+    # 建立小寫版本供比較用
+    original_words_lower = [w.lower() for w in original_words]
+    spoken_words_lower = [w.lower() for w in spoken_words]
+
     result = []
     i, j = 0, 0
     correct = 0
     total = len(original_words)
 
     while i < len(original_words):
-        if j < len(spoken_words) and original_words[i] == spoken_words[j]:
-            result.append(original_words[i])
+        if j < len(spoken_words) and original_words_lower[i] == spoken_words_lower[j]:
+            result.append(original_words[i])  # 保留原字
             correct += 1
             i += 1
             j += 1
-        elif j < len(spoken_words) and (i + 1 < len(original_words) and original_words[i + 1] == spoken_words[j]):
+        elif j < len(spoken_words) and (i + 1 < len(original_words) and original_words_lower[i + 1] == spoken_words_lower[j]):
             result.append(f"{original_words[i]}(missing)")
             i += 1
         elif j < len(spoken_words):

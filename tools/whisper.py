@@ -32,17 +32,22 @@ def translate(arguments):
     if not file_path or not os.path.exists(file_path):
         return {"error": f"File not found: {file_path}"}
 
-    duration = librosa.get_duration(path=file_path)
+    try:
+        duration = librosa.get_duration(path=file_path)
+        result = model.transcribe(file_path, task="translate")
+        translated_text = result.get("text", "").strip()
 
-    result = model.transcribe(file_path, task="translate")
-    translated_text = result.get("text", "").strip()
+        word_count = len(translated_text.split())
+        duration_minutes = duration / 60
+        wpm = round(word_count / duration_minutes, 2) if duration_minutes > 0 else 0
 
-    word_count = len(translated_text.split())
-
-    duration_minutes = duration / 60
-    wpm = round(word_count / duration_minutes, 2) if duration_minutes > 0 else 0
-
-    return {
-        "translation": translated_text,
-        "wpm": wpm
-    }
+        return {
+            "translation": translated_text,
+            "wpm": wpm
+        }
+    finally:
+        try:
+            os.remove(file_path)
+            print(f"🗑️ 檔案已刪除: {file_path}")
+        except Exception as e:
+            print(f"⚠️ 檔案刪除失敗: {e}")
