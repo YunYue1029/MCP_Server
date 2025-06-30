@@ -8,7 +8,7 @@ client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def predict_speech(arguments):
     """step by step"""
-    user_text = arguments.get("text", "")
+    user_text = arguments.get("speech", "")
     if not user_text:
         return {"error": "Missing 'text' in arguments."}
 
@@ -21,7 +21,7 @@ def predict_speech(arguments):
     如果無法推測出正確的句子，請回傳“”I don't understand what you want to say.。
     回傳以下 JSON 格式的資訊：
     {
-        "pridect_speech": "推測的句子"
+        "pridect_speech": "推測的英文句子"
     }
     """
 
